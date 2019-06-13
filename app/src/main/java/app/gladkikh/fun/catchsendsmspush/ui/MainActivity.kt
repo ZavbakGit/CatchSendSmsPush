@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private val permissionRequestCode = 123
 
+
     private val router: IRouter = Router(supportFragmentManager)
 
 
@@ -36,7 +37,9 @@ class MainActivity : AppCompatActivity() {
         val viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
 
         fab.setOnClickListener {
-            router.showSendSmsDialog()
+            if (isCheckPermissionSms()) {
+                router.showSendSmsDialog()
+            }
         }
 
         val adapter = RecyclerViewAdapter(this)
@@ -59,7 +62,9 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.RECEIVE_SMS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            val permissions = arrayOf(Manifest.permission.RECEIVE_SMS)
+            val permissions = arrayOf(
+                Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS
+            )
             ActivityCompat.requestPermissions(this, permissions, permissionRequestCode)
         }
     }
@@ -94,4 +99,32 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+    private fun isCheckPermissionSms(): Boolean {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                Snackbar.make(
+                    fab,
+                    "Извините, апп без данного разрешения может работать неправильно",
+                    Snackbar.LENGTH_LONG
+                )
+                    .setAction("Action", null).show()
+
+                return false
+            }
+
+            ActivityCompat.requestPermissions(
+                this, arrayOf(Manifest.permission.SEND_SMS),
+                permissionRequestCode
+            )
+            return false
+        }
+
+        return true
+    }
+
 }
