@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1045215595934",
+    "firebase_url": "https://catchsendsmspush-e65b8.firebaseio.com",
+    "project_id": "catchsendsmspush-e65b8",
+    "storage_bucket": "catchsendsmspush-e65b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045215595934:android:b79f13390b184416",
+        "android_client_info": {
+          "package_name": "app.gladkikh.fun.catchsendsmspush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045215595934-ummpuk9lvrlq2mfq5l26f5pqs9vdh0hg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdf5GwEbQ5Cc4jXmXp2Uw3TwOAzGqV5cw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045215595934-ummpuk9lvrlq2mfq5l26f5pqs9vdh0hg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
